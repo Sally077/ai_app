@@ -5,6 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Blog Generator</title>
     <script src="https://cdn.tailwindcss.com" rel="stylesheet"></script>
+    <style>
+      @keyfames rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @-webkit-keyframes rotate {
+        from {
+          -webkit-transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+
+      .load {
+        width: 100px;
+        height: 100px;
+        margin: 110px auto 0;
+        border: solid 10px #8822aa;
+        border-radius: 50%;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        -webkit-transition: all 0.5s ease-in;
+        -webkit-animation-name: rotate;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+      }
+    </style>
   </head>
   <body class="flex flex-col min-h-screen bg-gray-100 font-sans antialised">
     <!--Navbar-->
@@ -40,15 +73,33 @@
         <!-- Youtube section -->
         <div>
           <h2 class="text-xl mb-4 font-semibold">Enter Youtube Video Link</h2>
-          <div class="flex space-x-4"></div>
-          <input
-            id="youtubeLink"
-            type="url"
-            placeholder="Paste Youtube Link Here"
-            class="flex-grow p-2"
-          />
+          <div class="flex space-x-4">
+            <input
+              id="youtubeLink"
+              type="url"
+              placeholder="Paste Youtube Link Here"
+              class="flex-grow p-2 border border-blue-500 rounded-l-md"
+            />
+            <button
+              id="GenerateBlogButton"
+              class="bg-blue-500 px-4 py-2 text-white rounded-r-md hover:bg-gradient-to-r from-cyan-500 to-blue-500"
+            >
+              Generate
+            </button>
+          </div>
         </div>
+        <!-- Section for loading circle  -->
+        <div style="display: none" id="loading-circle" class="load"></div>
+        <!-- Generated Blog Section  -->
+        <section class="mt-10 flex-grow">
+          <h2 class="text-xl mb-4 font-semibold">Generated Blog Article</h2>
+          <div id="blogContent" class="mt-2 text-gray-700 space-y-4"></div>
+        </section>
       </div>
     </div>
+    <footer class="text-center p-4 text-black mt-6">
+      <a href="http:www.hedges-tech.co.uk">Powered by Hedges</a>
+    </footer>
+    <script></script>
   </body>
 </html>
